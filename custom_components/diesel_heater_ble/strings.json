@@ -1,0 +1,21 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Select Diesel Heater",
+        "description": "Select your diesel heater from the list of discovered devices.",
+        "data": {
+          "address": "Device"
+        }
+      },
+      "bluetooth_confirm": {
+        "title": "Confirm Setup",
+        "description": "Do you want to set up {name}?"
+      }
+    },
+    "abort": {
+      "already_configured": "Device is already configured",
+      "no_devices_found": "No diesel heaters found. Make sure your heater is powered on and in range."
+    }
+  }
+}
