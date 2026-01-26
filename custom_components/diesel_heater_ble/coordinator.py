@@ -17,6 +17,7 @@ from .const import (
     CMD_SET_FAN_MODE,
     CMD_SET_LEVEL_MODE,
     CMD_SET_TEMP_MODE,
+    CMD_TOGGLE_PLATEAU_MODE,
     CMD_TOGGLE_POWER,
     DEFAULT_SCAN_INTERVAL,
     DOMAIN,
@@ -56,9 +57,9 @@ class DieselHeaterCoordinator(DataUpdateCoordinator[HeaterState | None]):
         return self._address
 
     def update_ble_device(self, ble_device: BLEDevice) -> None:
-        """Update the BLE device reference."""
+        """Update the BLE device reference without disconnecting."""
         self._ble_device = ble_device
-        self._client = DieselHeaterBLEClient(ble_device)
+        self._client.set_ble_device(ble_device)
 
     async def _async_update_data(self) -> HeaterState | None:
         """Fetch data from heater."""
@@ -90,6 +91,14 @@ class DieselHeaterCoordinator(DataUpdateCoordinator[HeaterState | None]):
     async def async_set_fan_mode(self) -> bool:
         """Set fan-only mode."""
         response = await self._client.send_command(CMD_SET_FAN_MODE)
+        if response is not None:
+            await self.async_request_refresh()
+            return True
+        return False
+
+    async def async_toggle_plateau_mode(self) -> bool:
+        """Toggle high altitude/plateau mode."""
+        response = await self._client.send_command(CMD_TOGGLE_PLATEAU_MODE)
         if response is not None:
             await self.async_request_refresh()
             return True

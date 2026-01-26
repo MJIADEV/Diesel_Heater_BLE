@@ -27,9 +27,9 @@ async def async_setup_entry(
 class DieselHeaterControlModeSelect(DieselHeaterEntity, SelectEntity):
     """Select for control mode."""
 
-    _attr_name = "Control Mode"
+    _attr_translation_key = "control_mode"
     _attr_icon = "mdi:tune"
-    _attr_options = ["Level", "Temperature"]
+    _attr_options = ["level", "temperature"]
 
     def __init__(self, coordinator: DieselHeaterCoordinator) -> None:
         """Initialize the select."""
@@ -41,14 +41,14 @@ class DieselHeaterControlModeSelect(DieselHeaterEntity, SelectEntity):
         if self.coordinator.data is None:
             return None
         if self.coordinator.data.control_mode == ControlMode.LEVEL:
-            return "Level"
+            return "level"
         if self.coordinator.data.control_mode == ControlMode.TEMPERATURE:
-            return "Temperature"
+            return "temperature"
         return None
 
     async def async_select_option(self, option: str) -> None:
         """Select control mode."""
-        if option == "Level":
+        if option == "level":
             await self.coordinator.async_set_level_mode()
-        elif option == "Temperature":
+        elif option == "temperature":
             await self.coordinator.async_set_temp_mode()

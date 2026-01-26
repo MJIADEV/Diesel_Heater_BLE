@@ -1,0 +1,68 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Vælg Dieselvarmer",
+        "description": "Vælg din dieselvarmer fra listen over fundne enheder.",
+        "data": {
+          "address": "Enhed"
+        }
+      },
+      "bluetooth_confirm": {
+        "title": "Bekræft Opsætning",
+        "description": "Vil du konfigurere {name}?"
+      }
+    },
+    "abort": {
+      "already_configured": "Enheden er allerede konfigureret",
+      "no_devices_found": "Ingen dieselvarmere fundet. Sørg for at din varmer er tændt og inden for rækkevidde."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "voltage": {
+        "name": "Forsyningsspænding"
+      },
+      "environment_temp": {
+        "name": "Omgivelsestemperatur"
+      },
+      "combustion_temp": {
+        "name": "Forbrændingstemperatur"
+      },
+      "running_state": {
+        "name": "Driftstilstand"
+      },
+      "operating_mode": {
+        "name": "Driftsmode"
+      },
+      "error_code": {
+        "name": "Fejlkode"
+      }
+    },
+    "switch": {
+      "power": {
+        "name": "Tænd/Sluk"
+      },
+      "plateau_mode": {
+        "name": "Plateautilstand"
+      }
+    },
+    "select": {
+      "control_mode": {
+        "name": "Styringsmode",
+        "state": {
+          "level": "Niveau",
+          "temperature": "Temperatur"
+        }
+      }
+    },
+    "number": {
+      "level": {
+        "name": "Varmeniveau"
+      },
+      "temperature": {
+        "name": "Måltemperatur"
+      }
+    }
+  }
+}

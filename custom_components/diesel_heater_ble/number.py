@@ -36,7 +36,7 @@ async def async_setup_entry(
 class DieselHeaterLevelNumber(DieselHeaterEntity, NumberEntity):
     """Number for heater level."""
 
-    _attr_name = "Heat Level"
+    _attr_translation_key = "level"
     _attr_icon = "mdi:speedometer"
     _attr_mode = NumberMode.SLIDER
     _attr_native_min_value = MIN_LEVEL
@@ -70,7 +70,7 @@ class DieselHeaterLevelNumber(DieselHeaterEntity, NumberEntity):
 class DieselHeaterTemperatureNumber(DieselHeaterEntity, NumberEntity):
     """Number for target temperature."""
 
-    _attr_name = "Target Temperature"
+    _attr_translation_key = "temperature"
     _attr_icon = "mdi:thermometer"
     _attr_mode = NumberMode.SLIDER
     _attr_native_min_value = MIN_TEMP_C

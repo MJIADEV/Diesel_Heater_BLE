@@ -41,7 +41,7 @@ async def async_setup_entry(
 class DieselHeaterVoltageSensor(DieselHeaterEntity, SensorEntity):
     """Sensor for supply voltage."""
 
-    _attr_name = "Supply Voltage"
+    _attr_translation_key = "voltage"
     _attr_device_class = SensorDeviceClass.VOLTAGE
     _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_native_unit_of_measurement = UnitOfElectricPotential.VOLT
@@ -61,7 +61,7 @@ class DieselHeaterVoltageSensor(DieselHeaterEntity, SensorEntity):
 class DieselHeaterEnvironmentTempSensor(DieselHeaterEntity, SensorEntity):
     """Sensor for environment temperature."""
 
-    _attr_name = "Environment Temperature"
+    _attr_translation_key = "environment_temp"
     _attr_device_class = SensorDeviceClass.TEMPERATURE
     _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
@@ -81,7 +81,7 @@ class DieselHeaterEnvironmentTempSensor(DieselHeaterEntity, SensorEntity):
 class DieselHeaterCombustionTempSensor(DieselHeaterEntity, SensorEntity):
     """Sensor for combustion chamber temperature."""
 
-    _attr_name = "Combustion Temperature"
+    _attr_translation_key = "combustion_temp"
     _attr_device_class = SensorDeviceClass.TEMPERATURE
     _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
@@ -101,7 +101,7 @@ class DieselHeaterCombustionTempSensor(DieselHeaterEntity, SensorEntity):
 class DieselHeaterRunningStateSensor(DieselHeaterEntity, SensorEntity):
     """Sensor for running state."""
 
-    _attr_name = "Running State"
+    _attr_translation_key = "running_state"
     _attr_icon = "mdi:state-machine"
 
     def __init__(self, coordinator: DieselHeaterCoordinator) -> None:
@@ -119,7 +119,7 @@ class DieselHeaterRunningStateSensor(DieselHeaterEntity, SensorEntity):
 class DieselHeaterOperatingModeSensor(DieselHeaterEntity, SensorEntity):
     """Sensor for operating mode."""
 
-    _attr_name = "Operating Mode"
+    _attr_translation_key = "operating_mode"
     _attr_icon = "mdi:thermostat"
 
     def __init__(self, coordinator: DieselHeaterCoordinator) -> None:
@@ -137,7 +137,7 @@ class DieselHeaterOperatingModeSensor(DieselHeaterEntity, SensorEntity):
 class DieselHeaterErrorCodeSensor(DieselHeaterEntity, SensorEntity):
     """Sensor for error code."""
 
-    _attr_name = "Error Code"
+    _attr_translation_key = "error_code"
     _attr_icon = "mdi:alert-circle"
     _attr_entity_registry_enabled_default = False
 

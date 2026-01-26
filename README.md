@@ -1,6 +1,33 @@
 # HomeAssistant Diesel Heater BLE
 
-Controlling Chinese diesel parking heaters via Bluetooth Low Energy (BLE), using Custom Components in Home Assistant
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
+
+Controlling Chinese diesel parking heaters via Bluetooth Low Energy (BLE), using Custom Components in Home Assistant.
+
+## Installation
+
+### HACS (Recommended)
+
+1. Open HACS in Home Assistant
+2. Click on "Integrations"
+3. Click the three dots in the top right corner
+4. Select "Custom repositories"
+5. Add this repository URL and select "Integration" as the category
+6. Click "Add"
+7. Search for "Diesel Heater BLE" and install it
+8. Restart Home Assistant
+
+### Manual Installation
+
+1. Copy the `custom_components/diesel_heater_ble` folder to your Home Assistant `config/custom_components/` directory
+2. Restart Home Assistant
+
+## Configuration
+
+1. Go to Settings → Devices & Services
+2. Click "Add Integration"
+3. Search for "Diesel Heater BLE"
+4. Select your heater from the discovered devices
 
 ## Features
 

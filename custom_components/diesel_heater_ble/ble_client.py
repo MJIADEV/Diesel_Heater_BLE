@@ -49,6 +49,10 @@ class DieselHeaterBLEClient:
         """Return True if connected."""
         return self._client is not None and self._client.is_connected
 
+    def set_ble_device(self, ble_device: BLEDevice) -> None:
+        """Update BLE device reference without disconnecting."""
+        self._ble_device = ble_device
+
     async def connect(self) -> bool:
         """Connect to the heater."""
         if self.is_connected:
