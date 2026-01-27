@@ -11,7 +11,7 @@ from homeassistant.const import UnitOfElectricPotential, UnitOfTemperature
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-from .const import DOMAIN
+from .const import DOMAIN, ERROR_DESCRIPTIONS, ERROR_DESCRIPTIONS_DA
 from .coordinator import DieselHeaterCoordinator
 from .entity import DieselHeaterEntity
 
@@ -146,8 +146,27 @@ class DieselHeaterErrorCodeSensor(DieselHeaterEntity, SensorEntity):
         super().__init__(coordinator, "error_code")
 
     @property
-    def native_value(self) -> int | None:
-        """Return the error code."""
+    def native_value(self) -> str | None:
+        """Return the error code with E prefix."""
         if self.coordinator.data is None:
             return None
-        return self.coordinator.data.error_code
+        error_code = self.coordinator.data.error_code
+        if error_code is None:
+            return None
+        return f"E{error_code}"
+
+    @property
+    def extra_state_attributes(self) -> dict[str, str] | None:
+        """Return error description as attribute."""
+        if self.coordinator.data is None:
+            return None
+        error_code = self.coordinator.data.error_code
+        if error_code is None:
+            return None
+        # Use Danish descriptions if HA language is Danish
+        lang = self.hass.config.language
+        if lang == "da":
+            description = ERROR_DESCRIPTIONS_DA.get(error_code, "Ukendt fejl")
+        else:
+            description = ERROR_DESCRIPTIONS.get(error_code, "Unknown error")
+        return {"description": description}

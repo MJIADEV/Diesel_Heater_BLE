@@ -95,3 +95,33 @@ MAX_LEVEL = 6
 # Temperature range (Celsius)
 MIN_TEMP_C = 8
 MAX_TEMP_C = 36
+
+# Error code descriptions (English)
+ERROR_DESCRIPTIONS: dict[int, str] = {
+    0: "No error",
+    1: "Under-voltage - Battery voltage is too low. Recharge the battery or check connections",
+    2: "Over-voltage - Voltage is too high. Ensure 12V/24V input matches the heater setting",
+    3: "Glow Plug Fault - Glow plug is faulty or unplugged. Check plug and wiring",
+    4: "Fuel Pump Fault - Fuel pump is disconnected or broken. Check wire connection",
+    5: "Overheating - Unit is too hot. Check that air intake/outlets are not blocked and vents are open",
+    6: "Fan Motor Fault - Fan motor issue or low voltage preventing motor start",
+    7: "Controller/Heater Fault - Communication breakdown between the controller and motherboard",
+    8: "Flame out detected",
+    9: "Body overheat",
+    10: "Temperature sensor failure",
+}
+
+# Error code descriptions (Danish)
+ERROR_DESCRIPTIONS_DA: dict[int, str] = {
+    0: "Ingen fejl",
+    1: "Underspænding - Batterispændingen er for lav. Oplad batteriet eller tjek forbindelserne",
+    2: "Overspænding - Spændingen er for høj. Sørg for at 12V/24V input matcher varmerens indstilling",
+    3: "Glødestiftfejl - Glødestiften er defekt eller ikke tilsluttet. Tjek stik og ledninger",
+    4: "Brændstofpumpefejl - Brændstofpumpen er afbrudt eller defekt. Tjek ledningsforbindelsen",
+    5: "Overophedning - Enheden er for varm. Tjek at luftindtag/udløb ikke er blokeret og ventiler er åbne",
+    6: "Blæsermotorfejl - Problem med blæsermotor eller lav spænding forhindrer motorstart",
+    7: "Controller/Varmerfejl - Kommunikationsfejl mellem controller og hovedkort",
+    8: "Flamme slukket",
+    9: "Kabinet overophedet",
+    10: "Temperatursensorfejl",
+}
