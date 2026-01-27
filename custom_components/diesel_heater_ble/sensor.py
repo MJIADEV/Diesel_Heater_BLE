@@ -1,6 +1,10 @@
 """Sensor platform for Diesel Heater BLE."""
 from __future__ import annotations
 
+import json
+import logging
+from pathlib import Path
+
 from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntity,
@@ -11,9 +15,38 @@ from homeassistant.const import UnitOfElectricPotential, UnitOfTemperature
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-from .const import DOMAIN, ERROR_DESCRIPTIONS, ERROR_DESCRIPTIONS_DA
+from .const import DOMAIN
 from .coordinator import DieselHeaterCoordinator
 from .entity import DieselHeaterEntity
+
+_LOGGER = logging.getLogger(__name__)
+
+# Cache for loaded translations
+_translations_cache: dict[str, dict[str, str]] = {}
+
+
+def get_error_description(language: str, error_code: int) -> str:
+    """Get error description from translation files."""
+    global _translations_cache
+
+    # Default to English if language not supported
+    if language not in ("en", "da"):
+        language = "en"
+
+    # Load translations if not cached
+    if language not in _translations_cache:
+        translations_path = Path(__file__).parent / "translations" / f"{language}.json"
+        try:
+            with open(translations_path, encoding="utf-8") as f:
+                data = json.load(f)
+                _translations_cache[language] = data.get("error_descriptions", {})
+        except (OSError, json.JSONDecodeError) as err:
+            _LOGGER.warning("Failed to load translations for %s: %s", language, err)
+            _translations_cache[language] = {}
+
+    # Get description
+    descriptions = _translations_cache.get(language, {})
+    return descriptions.get(str(error_code), descriptions.get("unknown", "Unknown error"))
 
 
 async def async_setup_entry(
@@ -163,10 +196,7 @@ class DieselHeaterErrorCodeSensor(DieselHeaterEntity, SensorEntity):
         error_code = self.coordinator.data.error_code
         if error_code is None:
             return None
-        # Use Danish descriptions if HA language is Danish
-        lang = self.hass.config.language
-        if lang == "da":
-            description = ERROR_DESCRIPTIONS_DA.get(error_code, "Ukendt fejl")
-        else:
-            description = ERROR_DESCRIPTIONS.get(error_code, "Unknown error")
+        # Get description from translation files based on HA language
+        language = self.hass.config.language
+        description = get_error_description(language, error_code)
         return {"description": description}

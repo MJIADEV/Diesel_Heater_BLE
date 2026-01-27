@@ -1,4 +1,18 @@
 {
+  "error_descriptions": {
+    "0": "No error",
+    "1": "Under-voltage - Battery voltage is too low. Recharge the battery or check connections",
+    "2": "Over-voltage - Voltage is too high. Ensure 12V/24V input matches the heater setting",
+    "3": "Glow Plug Fault - Glow plug is faulty or unplugged. Check plug and wiring",
+    "4": "Fuel Pump Fault - Fuel pump is disconnected or broken. Check wire connection",
+    "5": "Overheating - Unit is too hot. Check that air intake/outlets are not blocked and vents are open",
+    "6": "Fan Motor Fault - Fan motor issue or low voltage preventing motor start",
+    "7": "Controller/Heater Fault - Communication breakdown between the controller and motherboard",
+    "8": "Flame out detected",
+    "9": "Body overheat",
+    "10": "Temperature sensor failure",
+    "unknown": "Unknown error"
+  },
   "config": {
     "step": {
       "user": {

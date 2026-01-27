@@ -1,4 +1,18 @@
 {
+  "error_descriptions": {
+    "0": "Ingen fejl",
+    "1": "Underspænding - Batterispændingen er for lav. Oplad batteriet eller tjek forbindelserne",
+    "2": "Overspænding - Spændingen er for høj. Sørg for at 12V/24V input matcher varmerens indstilling",
+    "3": "Glødestiftfejl - Glødestiften er defekt eller ikke tilsluttet. Tjek stik og ledninger",
+    "4": "Brændstofpumpefejl - Brændstofpumpen er afbrudt eller defekt. Tjek ledningsforbindelsen",
+    "5": "Overophedning - Enheden er for varm. Tjek at luftindtag/udløb ikke er blokeret og ventiler er åbne",
+    "6": "Blæsermotorfejl - Problem med blæsermotor eller lav spænding forhindrer motorstart",
+    "7": "Controller/Varmerfejl - Kommunikationsfejl mellem controller og hovedkort",
+    "8": "Flamme slukket",
+    "9": "Kabinet overophedet",
+    "10": "Temperatursensorfejl",
+    "unknown": "Ukendt fejl"
+  },
   "config": {
     "step": {
       "user": {
