@@ -22,7 +22,13 @@ Controlling Chinese diesel parking heaters via Bluetooth Low Energy (BLE), using
 1. Copy the `custom_components/diesel_heater_ble` folder to your Home Assistant `config/custom_components/` directory
 2. Restart Home Assistant
 
-## Configuration
+## Setup
+
+My Home Assistant shortcut:
+
+[![Add Integration](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=diesel_heater_ble)
+
+Or manually:
 
 1. Go to Settings → Devices & Services
 2. Click "Add Integration"
